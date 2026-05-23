@@ -1,1 +1,74 @@
-
+<?xml version="1.0" encoding="utf-8"?>
+<Project DEFAULTTARGETS="Build" TOOLSVERSION="15.0" XMLNS="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup LABEL="ProjectConfigurations">
+    <ProjectConfiguration INCLUDE="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup LABEL="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{ABC12345-6789-DEF0-1234-56789ABCDEF0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>kotofeywin</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import PROJECT="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup CONDITION="'$(Configuration)|$(Platform)'=='Release|x64'" LABEL="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import PROJECT="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup LABEL="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup LABEL="Shared">
+  </ImportGroup>
+  <ImportGroup CONDITION="'$(Configuration)|$(Platform)'=='Release|x64'" LABEL="PropertySheets">
+    <Import PROJECT="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" CONDITION="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" LABEL="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup LABEL="UserMacros" />
+  <PropertyGroup CONDITION="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir);$(SolutionDir)imgui;$(SolutionDir)minhook\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup CONDITION="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionOrderIntrinsics>true</FunctionOrderIntrinsics>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;KOTOFEYWIN_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)imgui;$(SolutionDir)minhook\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile INCLUDE="main.cpp" />
+    <ClCompile INCLUDE="..\imgui\imgui.cpp" />
+    <ClCompile INCLUDE="..\imgui\imgui_demo.cpp" />
+    <ClCompile INCLUDE="..\imgui\imgui_draw.cpp" />
+    <ClCompile INCLUDE="..\imgui\imgui_tables.cpp" />
+    <ClCompile INCLUDE="..\imgui\imgui_widgets.cpp" />
+    <ClCompile INCLUDE="..\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile INCLUDE="..\imgui\imgui_impl_win32.cpp" />
+    <ClCompile INCLUDE="..\minhook\src\buffer.c" />
+    <ClCompile INCLUDE="..\minhook\src\hook.c" />
+    <ClCompile INCLUDE="..\minhook\src\trampoline.c" />
+    <ClCompile INCLUDE="..\minhook\src\hde\hde32.c" />
+    <ClCompile INCLUDE="..\minhook\src\hde\hde64.c" />
+  </ItemGroup>
+  <Import PROJECT="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup LABEL="ExtensionTargets">
+  </ImportGroup>
+</Project>
