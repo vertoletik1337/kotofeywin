@@ -35,7 +35,7 @@ jobs:
         powershell -Command "Copy-Item -Path imgui/backends/imgui_impl_win32.* -Destination imgui/"
 
     - name: Build Solution in Release x64
-      run: msbuild YourProjectName.sln -p:Configuration=Release -p:Platform=x64
+      run: msbuild kotofeywin.sln -p:Configuration=Release -p:Platform=x64
 
     - name: Upload Compiled DLL Artifact
       uses: actions/upload-artifact@v4
