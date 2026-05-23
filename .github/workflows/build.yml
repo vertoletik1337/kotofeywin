@@ -1,0 +1,36 @@
+name: Build AI_Kolbasa Multihack
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Navigate to Workspace
+      run: cd ${{ github.workspace }}
+
+    - name: Restore NuGet Packages
+      run: nuget restore YourProjectName.sln
+      continue-on-error: true
+
+    - name: Build Solution in Release x64
+      run: msbuild YourProjectName.sln -p:Configuration=Release -p:Platform=x64
+
+    - name: Upload Compiled DLL Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: AI_Kolbasa_Release_x64
+        path: ${{ github.workspace }}/x64/Release/*.dll
