@@ -23,7 +23,7 @@ jobs:
       run: cd ${{ github.workspace }}
 
     - name: Restore NuGet Packages
-      run: nuget restore YourProjectName.sln
+      run: nuget restore kotofeywin.sln
       continue-on-error: true
 
     - name: Build Solution in Release x64
