@@ -6,6 +6,10 @@
 #include "imgui/imgui_impl_dx11.h"
 #include "minhook/include/MinHook.h"
 
+// Линковка необходимых библиотек для DirectX и графики
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "dxgi.lib")
+
 namespace Offsets { 
     uintptr_t Base = 0; 
     uintptr_t PlayerMgr_Inst = 0x521E10; 
